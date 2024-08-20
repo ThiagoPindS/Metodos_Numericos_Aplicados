@@ -1,0 +1,33 @@
+//https://replit.com/@ThiagoPinheiro8/Bhaskara#main.cs
+using System;
+
+class Program
+{
+  public static void Main (string[] args)
+  {
+    //varíaveis
+    double a, b, c;
+
+    //entrada de dados
+    Console.WriteLine("Insira os valores de:\na:\nb:\nc:");
+    a = double.Parse(Console.ReadLine());
+    Console.Clear();
+    Console.WriteLine("Insira os valores de:\na: " + a + "\nb:\nc:");
+    b = double.Parse(Console.ReadLine());
+    Console.Clear();
+    Console.WriteLine("Insira os valores de:\na: " + a + "\nb: " + b + "\nc:");
+    c = double.Parse(Console.ReadLine());
+    Console.Clear();
+
+    //processamento
+    double delta = Math.Pow(b, 2) - (4 * a * c);
+    double x1 = (-b + Math.Sqrt(delta)) / (2 * a);
+    double x2 = (-b - Math.Sqrt(delta)) / (2 * a);
+
+    //saída de dados
+    Console.WriteLine("Insira os valores de:\na: " + a + "\nb: " + b + "\nc: " + c);
+    Console.WriteLine("O valor de delta é: " + delta);
+    Console.WriteLine("O valor de x1 é: " + x1);
+    Console.WriteLine("O valor de x2 é: " + x2);
+  }
+}
