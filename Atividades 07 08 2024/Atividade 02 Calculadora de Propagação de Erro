@@ -1,0 +1,58 @@
+// https://replit.com/@ThiagoPinheiro8/ErrorPropagation#main.cs
+using System;
+
+class Program
+{
+    // Defina a função f(x1, x2, ..., xn)
+    static double Funcao(double x1, double x2)
+    {
+        // Exemplo: f(x1, x2) = x1^2 + x2^2
+        return x1 * x1 + x2 * x2;
+    }
+
+    // Derivada parcial de f em relação a x1
+    static double DerivadaParcialX1(double x1, double x2)
+    {
+        // Derivada de x1^2 + x2^2 em relação a x1 é 2 * x1
+        return 2 * x1;
+    }
+
+    // Derivada parcial de f em relação a x2
+    static double DerivadaParcialX2(double x1, double x2)
+    {
+        // Derivada de x1^2 + x2^2 em relação a x2 é 2 * x2
+        return 2 * x2;
+    }
+
+    // Função para calcular a propagação de erros
+    static double CalcularErroPropagado(double x1, double x2, double sigmaX1, double sigmaX2)
+    {
+        // Cálculo das derivadas parciais
+        double dFdX1 = DerivadaParcialX1(x1, x2);
+        double dFdX2 = DerivadaParcialX2(x1, x2);
+
+        // Cálculo do erro propagado
+        return Math.Sqrt(Math.Pow(dFdX1 * sigmaX1, 2) + Math.Pow(dFdX2 * sigmaX2, 2));
+    }
+
+    static void Main()
+    {
+        // Valores das variáveis
+        double x1 = 2.0;
+        double x2 = 3.0;
+
+        // Erros nas variáveis
+        double sigmaX1 = 0.1;
+        double sigmaX2 = 0.2;
+
+        // Calcular o valor da função
+        double valorFuncao = Funcao(x1, x2);
+
+        // Calcular o erro propagado
+        double erroPropagado = CalcularErroPropagado(x1, x2, sigmaX1, sigmaX2);
+
+        // Exibir resultados
+        Console.WriteLine($"Valor da função f(x1, x2) = {valorFuncao}");
+        Console.WriteLine($"Erro propagado: {erroPropagado}");
+    }
+}
